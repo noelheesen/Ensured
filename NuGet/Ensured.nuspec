@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Noël Heesen</authors>
+    <owners>Noël Heesen</owners>
+    <licenseUrl>https://github.com/noelheesen/Ensured/blob/master/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/noelheesen/Ensured</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A simple light weight guard</description>
+    <releaseNotes>Initial alpha release</releaseNotes>
+    <copyright>Copyright 2017 Noël Heesen</copyright>
+    <tags>C# portable pcl guard ensured ensure</tags>
+  </metadata>
+</package>

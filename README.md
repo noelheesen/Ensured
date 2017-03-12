@@ -19,7 +19,11 @@ See the **[Wiki](/wiki)** for API and documentation.
 
 ## NuGet
 
-`Throw new NotImplementedException()`, see [RoadMap](#RoadMap)
+[NuGet](https://www.nuget.org/packages/Ensured/)
+
+```
+install-package Ensured
+```
 
 Ensured is a **_portable class library_** that targets:
 
@@ -46,7 +50,7 @@ Ensured should not restrict in any way so the value always gets returned when pa
 
 Want to help me keep code clean and maintainable? 
 
-1. Clone the repository;
+1. Clone the repository and make sure you are on the develop branch;
 2. Create a new branch: `git-checkout -b feat-support-for-types`;
 	* Branch names should start with `fix-` or `feat-`;
 3. Implement the awesome fix / feature;
@@ -55,7 +59,7 @@ Want to help me keep code clean and maintainable?
 6. Push the newly created branch: `git-push origin feat-support-for-types`;
 7. Create a pull request.
 
-For more information about conventions see [Contribute](Contribute.md)
+For more information about conventions see [Contribute](../../Contribute.md)
 
 ## RoadMap
 
@@ -71,4 +75,4 @@ For more information about conventions see [Contribute](Contribute.md)
 
 ## License
 
-[MIT](License.txt)
+[MIT](../../License.txt)

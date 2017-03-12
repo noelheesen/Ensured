@@ -14,7 +14,7 @@ int y = Ensure.That(x).IsPositive();
 int z = Ensure.Condition(y, yVal => yVal > 0); 
 ```
 
-See the **[Wiki](/wiki)** for API and documentation.
+See the **[Wiki](../../wiki)** for API and documentation.
 
 
 ## NuGet
@@ -59,7 +59,7 @@ Want to help me keep code clean and maintainable?
 6. Push the newly created branch: `git-push origin feat-support-for-types`;
 7. Create a pull request.
 
-For more information about conventions see [Contribute](././Contribute.md)
+For more information about conventions see [Contribute](././CONTRIBUTE.md)
 
 ## RoadMap
 
@@ -75,4 +75,4 @@ For more information about conventions see [Contribute](././Contribute.md)
 
 ## License
 
-[MIT](././License.txt)
+[MIT](././LICENSE.txt)

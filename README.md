@@ -59,7 +59,7 @@ Want to help me keep code clean and maintainable?
 6. Push the newly created branch: `git-push origin feat-support-for-types`;
 7. Create a pull request.
 
-For more information about conventions see [Contribute](../../Contribute.md)
+For more information about conventions see [Contribute](././Contribute.md)
 
 ## RoadMap
 
@@ -75,4 +75,4 @@ For more information about conventions see [Contribute](../../Contribute.md)
 
 ## License
 
-[MIT](../../License.txt)
+[MIT](././License.txt)

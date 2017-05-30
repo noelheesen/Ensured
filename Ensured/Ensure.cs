@@ -4,12 +4,15 @@
     using System.Linq.Expressions;
 
     /// <summary>
-    /// Exposes methods to validate a given value.
+    /// Exposes methods to validate values
     /// </summary>
+    /// <remarks>
+    /// The only public class for the API.
+    /// </remarks>
     public static class Ensure
     {
         /// <summary>
-        /// This method provides a fluent API for validation
+        /// This method provides a context on which validation can be performed
         /// </summary>
         /// <remarks>
         /// This method creates an expression from the given <paramref name="value"/> and calls <see cref="That{T}(Expression{Func{T}})"/> internally
@@ -22,7 +25,7 @@
         }
 
         /// <summary>
-        /// This method provides a fluent API for validation
+        /// This method provides a context on which validation can be performed
         /// </summary>
         /// <typeparam name="T">The <see cref="Type"/> of the value that the <paramref name="expression"/> returns</typeparam>
         /// <param name="expression">An <see cref="Expression"/> that returns a value to validate</param>
@@ -61,8 +64,11 @@
         /// <param name="paramName">An optional custom parameter name for the <see cref="ArgumentNullException"/></param>
         /// <param name="message">An optional custom message for the <see cref="ArgumentNullException"/></param>
         /// <returns>The value that the <paramref name="expression"/> returns if validation is passed</returns>
-        /// <exception cref="ArgumentNullException">If the value returned from the <paramref name="expression"/> is <c>null</c></exception>
+        /// <exception cref="ArgumentNullException">If the value returned from the <paramref name="expression"/> is or compiled to <c>null</c> </exception>
         public static T NotNull<T>(Expression<Func<T>> expression, string paramName = null, string message = null) {
+
+            if (Equals(expression, null))
+                throw new ArgumentNullException("expression");
 
             var value = expression.Compile().Invoke();
             var name = paramName ?? ((MemberExpression)expression.Body).Member.Name;
@@ -76,19 +82,6 @@
             }
 
             return value;
-        }
-
-        /// <summary>
-        /// Ensures the given <paramref name="condition"/> results to <c>true</c> when passing in the given <paramref name="value"/>
-        /// </summary>
-        /// <typeparam name="T">The <see cref="Type"/> of the <paramref name="value"/></typeparam>
-        /// <param name="value">The value to validate</param>
-        /// <param name="condition">The condition to use when validating the value</param>
-        /// <returns>The <paramref name="value"/> if it passes validation</returns>
-        /// <exception cref="ArgumentException">If the <paramref name="value"/> does not pass validation</exception>
-        /// <exception cref="ArgumentNullException">If the <paramref name="condition"/> is <c>null</c></exception>
-        public static T Condition<T>(T value, Expression<Func<T, bool>> condition) {
-            return Ensure.Condition(value, condition, null, null);
         }
 
         /// <summary>
@@ -111,7 +104,6 @@
 
             if (!allowNull)
                 Ensure.NotNull(value);
-            
 
             if (!condition.Compile()(value)) {
                 if (Equals(paramName, null)) {
@@ -121,19 +113,6 @@
                 }
             }
             return value;
-        }
-
-        /// <summary>
-        /// Ensures the given <paramref name="condition"/> results to <c>true</c> when passing in the value of the given <paramref name="expression"/>
-        /// </summary>
-        /// <typeparam name="T">The <see cref="Type"/> of the value that the <paramref name="expression"/> returns</typeparam>
-        /// <param name="expression">An <see cref="Expression"/> that returns a value to validate</param>
-        /// <param name="condition">The condition to use when validating the value</param>
-        /// <returns>The value that the <paramref name="expression"/> returns if validation is passed</returns>
-        /// <exception cref="ArgumentException">If the value returned from the <paramref name="expression"/> does not pass validation</exception>
-        /// <exception cref="ArgumentNullException">If the <paramref name="expression"/> or <paramref name="condition"/> is <c>null</c></exception>
-        public static T Condition<T>(Expression<Func<T>> expression, Expression<Func<T, bool>> condition, bool allowNull = false) {
-            return Ensure.Condition(expression, condition, null, null);
         }
 
         /// <summary>
@@ -152,8 +131,9 @@
         /// <exception cref="ArgumentException">If the value returned from the <paramref name="expression"/> does not pass validation</exception>
         /// <exception cref="ArgumentNullException">If the <paramref name="expression"/> or <paramref name="condition"/> is <c>null</c></exception>
         public static T Condition<T>(Expression<Func<T>> expression, Expression<Func<T, bool>> condition, string message = null, string paramName = null, bool allowNull = false) {
-            Ensure.NotNull(expression);
-            Ensure.NotNull(condition);
+
+            if (Equals(expression, null))
+                throw new ArgumentNullException("expression");
 
             var value = expression.Compile().Invoke();
             var name = paramName ?? ((MemberExpression)expression.Body).Member.Name;

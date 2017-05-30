@@ -48,13 +48,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EnsureArrayTests.cs" />
-    <Compile Include="EnsureBooleanTests.cs" />
+    <Compile Include="Attributes\Attributes.cs" />
+    <Compile Include="Enums\FixType.cs" />
+    <Compile Include="Fixtures\Arrays.cs" />
+    <Compile Include="Fixtures\Fixtures.cs" />
+    <Compile Include="Fixtures\Strings.cs" />
+    <Compile Include="Tests\ArrayTests.cs" />
+    <Compile Include="Tests\ConditionTests.cs" />
+    <Compile Include="Tests\EnsureTests.cs" />
+    <Compile Include="Tests\NotNullTests.cs" />
+    <Compile Include="Tests\ThatTests.cs" />
+    <Compile Include="BooleanTests.cs" />
     <Compile Include="EnsureCollectionTests.cs" />
-    <Compile Include="EnsuredConvention.cs" />
-    <Compile Include="EnsureTests.cs" />
-    <Compile Include="InputAttribute.cs" />
+    <Compile Include="Conventions\EnsuredConvention.cs" />
+    <Compile Include="Fixtures\ArrayFixtures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Helpers\StringBuilderExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -68,6 +77,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

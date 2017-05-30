@@ -2,9 +2,21 @@
 {
     using System;
     using Shouldly;
+    using System.Text;
+    using Helpers;
 
-    public class EnsureBooleanTests
+    public class BooleanTests
     {
+        readonly StringBuilder log;
+
+        public BooleanTests()
+        {
+            log = new StringBuilder();
+            log.WhereAmI();
+        }
+
+
+
         public void Boolean_IsTrue_should_pass() {
             var sut = Ensure.That(true).IsTrue();
             sut.ShouldBeTrue();

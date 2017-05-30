@@ -20,10 +20,10 @@
         #region Constructors
 
         /// <summary>
-        /// Construct a context based upon an <see cref="Expression"/>.
+        /// Construct a context based upon the <paramref name="expression"/> passed in.
         /// </summary>
         /// <remarks>
-        /// The context will extract the <see cref="_paramName"/> from the expression and use it in case none is provided later. 
+        /// The context will extract the <see cref="_paramName"/> from the expression and use it in case none is provided later
         /// </remarks>
         /// <param name="expression">An <see cref="Expression"/> that returns a value to validate</param>
         internal ArgumentContext(Expression<Func<T>> expression) {
@@ -52,12 +52,15 @@
 
         #region Methods
 
+        /// <summary>
+        /// overriden to return <see cref="Value"/> instead of itself
+        /// </summary>
+        /// <returns><see cref="Value"/></returns>
         public override string ToString() {
             return this._value.ToString();
         }
 
         #endregion
-
 
     }
 }

@@ -20,9 +20,9 @@
         /// <exception cref="ArgumentNullException">If <paramref name="argument.Value"/> is <c>null</c></exception>
         public static T[] IsNotEmpty<T>(this ArgumentContext<T[]> argument, string message = null, string paramName = null) {
             return Ensure.Condition(
-                argument.Value, 
+                argument.Value,
                 a => a.Length > 0,
-                message ?? "Expected the array to have an item.", 
+                message ?? "Expected the array to have an item.",
                 paramName);
         }
 

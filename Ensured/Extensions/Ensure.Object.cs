@@ -1,4 +1,4 @@
-﻿namespace Ensured.Extensions
+﻿namespace Ensured
 {
     using System;
     using System.Reflection;
